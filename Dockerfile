@@ -1,4 +1,4 @@
-FROM bitnami/jenkins
+FROM bitnami/jenkins:latest
 
 USER root
 # Copy the plugins.txt file
@@ -20,4 +20,5 @@ RUN java -jar /opt/bitnami/jenkins/jenkins-plugin-manager-2.13.0.jar  --war /opt
 # Expose volumes
 VOLUME ["/bitnami/jenkins", "/mnt/jenkins_data"]
 
-
+# Change user from root to jenkins
+USER jenkins
