@@ -1,8 +1,125 @@
 jenkins:
+  systemMessage: "Welcome to Jenkins"
   securityRealm:
     local:
       allowsSignup: false
       users:
         - id: "admin"
           password: "admin"
-  authorizationStrategy: loggedInUsersCanDoAnything
+        - id: "user1"
+          password: "password1"
+        - id: "user2"
+          password: "password2"
+
+  clouds:
+    - kubernetes:
+        name: "minikube"
+        serverUrl: "https://localhost:8443"
+        skipTlsVerify: true
+        namespace: "default"
+        jenkinsUrl: "http://localhost:8080"
+        templates:
+        - name: "jnlp"
+          label: "mypod"
+          containers:
+            - name: "jnlp"
+              image: myregistry/inbound-agent:v123
+              privileged: 'false'
+              resourceLimitCpu: '4'
+              resourceLimitMemory: 10Gi
+              resourceRequestCpu: 500m
+              resourceRequestMemory: 1024Mi
+              ttyEnabled: 'false'
+              workingDir: /home/jenkins/agent
+
+  authorizationStrategy:
+    folderBased:
+      agentRoles:
+        - agents:
+            - "agent1"
+          name: "agentRole1"
+          permissions:
+            - id: "Agent/Configure"
+            - id: "Agent/Disconnect"
+          sids:
+            - "user1"
+      folderRoles:
+        - folders:
+            - "user1-folder"
+          name: "user1Role"
+          permissions:
+            - id: "Job/Read"
+            - id: "Job/Build"
+            - id: "Job/Create"
+          sids:
+            - "user1"
+        - folders:
+            - "user2-folder"
+          name: "user2Role"
+          permissions:
+            - id: "Job/Read"
+            - id: "Job/Build"
+            - id: "Job/Create"
+          sids:
+            - "user2"
+        - folders:
+            - "admin-folder"
+          name: "adminRole"
+          permissions:
+            - id: "Job/Read"
+            - id: "Job/Build"
+            - id: "Job/Create"
+            - id: "Job/Delete"
+          sids:
+            - "admin"
+      globalRoles:
+        - name: "admin"
+          permissions:
+            - id: "Overall/Administer"
+          sids:
+            - "admin"
+        - name: "read"
+          permissions:
+            - id: "Overall/Read"
+          sids:
+            - "user1"
+
+jobs:
+  - script: >
+        folder('user1-folder') {
+            description('Folder for user1')
+            displayName('User1 Folder')
+            authorization {
+                permission('hudson.model.Item.Read:user1')
+                permission('hudson.model.Item.Build:user1')
+                permission('hudson.model.Item.Create:user1')
+                permission('hudson.model.Item.Delete:admin')
+            }
+        }
+  - script: >
+        folder('user2-folder') {
+            description('Folder for user2')
+            displayName('User2 Folder')
+            authorization {
+                permission('hudson.model.Item.Read:user2')
+                permission('hudson.model.Item.Build:user2')
+                permission('hudson.model.Item.Create:user2')
+                permission('hudson.model.Item.Delete:admin')
+            }
+        }
+  - script: >
+        folder('admin-folder') {
+            description('Folder for admin')
+            displayName('Admin Folder')
+            authorization {
+                permission('hudson.model.Item.Read:admin')
+                permission('hudson.model.Item.Build:admin')
+                permission('hudson.model.Item.Create:admin')
+                permission('hudson.model.Item.Delete:admin')
+            }
+        }
+
+appearance:
+  locale:
+    systemLocale: en
+    ignoreAcceptLanguage: true
