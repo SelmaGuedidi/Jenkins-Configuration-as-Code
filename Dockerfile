@@ -1,4 +1,4 @@
-FROM bitnami/jenkins:latest
+FROM bitnami/jenkins:2.452.3
 
 USER root
 # Copy the plugins.txt file
