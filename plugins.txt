@@ -11,3 +11,4 @@ folder-auth:1.4
 job-dsl
 kubernetes
 workflow-aggregator
+build-discarder

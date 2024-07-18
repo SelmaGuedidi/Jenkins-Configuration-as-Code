@@ -7,13 +7,14 @@ COPY plugins.txt /opt/bitnami/jenkins/plugins.txt
 COPY jenkins-casc.yaml /opt/bitnami/jenkins/casc_configs/jenkins.yaml
 # Add SSL
 COPY jenkins.jks /bitnami/jenkins/home/jenkins.jks
+# Set the HOME environment variable
+ENV HOME=/home/jenkins
 # Specify cache directory
 ENV CACHE_DIR=/.cache/jenkins-plugin-management-cli
 # Tell the Jenkins Configuration as Code plugin where to find the YAML file
 ENV CASC_JENKINS_CONFIG /opt/bitnami/jenkins/casc_configs/jenkins.yaml
 # Disable the setup wizard as we will set up Jenkins as code
-ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
-
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS=true"
 # Install plugins
 RUN java -jar /opt/bitnami/jenkins/jenkins-plugin-manager-2.13.0.jar  --war /opt/bitnami/jenkins/jenkins.war --plugin-download-directory /bitnami/jenkins/home/plugins/ --plugin-file /opt/bitnami/jenkins/plugins.txt --verbose
 
