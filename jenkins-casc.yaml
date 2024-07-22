@@ -10,27 +10,7 @@ jenkins:
           password: "password1"
         - id: "user2"
           password: "password2"
-  nodes:
-    - permanent:
-        name: "static-agent1"
-        remoteFS: "/home/jenkins"
-        launcher:
-          inbound:
-            workDirSettings:
-              disabled: true
-              failIfWorkDirIsMissing: false
-              internalDir: "remoting"
-              workDirPath: "/tmp"
-    - permanent:
-        name: "static-agent2"
-        remoteFS: "/home/jenkins"
-        launcher:
-          inbound:
-            workDirSettings:
-              disabled: true
-              failIfWorkDirIsMissing: false
-              internalDir: "remoting"
-              workDirPath: "/tmp"
+
   clouds:
     - kubernetes:
         name: "minikube"
@@ -46,14 +26,7 @@ jenkins:
               privileged: 'false'
               ttyEnabled: 'false'
               workingDir: /home/jenkins/agent
-        - name: "powershell"
-          label: "powershell"
-          containers:
-            - name: "powershell" 
-              image: jenkins/jnlp-agent-powershell:latest
-              privileged: 'false'
-              ttyEnabled: 'false'
-              workingDir: /home/jenkins/agent  
+        
 
   authorizationStrategy:
     folderBased:
