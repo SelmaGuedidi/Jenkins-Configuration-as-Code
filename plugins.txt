@@ -14,3 +14,4 @@ workflow-aggregator
 build-discarder
 durable-task
 github
+instance-identity
