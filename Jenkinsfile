@@ -1,9 +1,9 @@
 
-   node("curl"){
+   node("maven"){
     stage('Get a Maven project') {
-      container('curl') {
-        stage('Build a Maven project') {
-          sh 'hostname'
+      container('maven') {
+        stage('Mvn version') {
+          sh 'mvn --version'
         }
       }
     }
