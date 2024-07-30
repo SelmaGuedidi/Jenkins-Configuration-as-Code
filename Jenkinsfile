@@ -1,16 +1,12 @@
 pipeline {
-    agent {
-        kubernetes{
-            label 'mypod'
-            defaultContainer 'jnlp'
+   node("curl"){
+    stage('Get a Maven project') {
+      container('curl') {
+        stage('Build a Maven project') {
+          sh 'hostname'
         }
+      }
     }
 
-    stages {
-        stage('Main') {
-            steps {
-                sh 'ls /'
-            }
-        }
-    }
+}
 }
