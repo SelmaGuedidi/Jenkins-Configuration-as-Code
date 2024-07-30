@@ -1,4 +1,4 @@
-pipeline {
+
    node("curl"){
     stage('Get a Maven project') {
       container('curl') {
@@ -9,4 +9,4 @@ pipeline {
     }
 
 }
-}
+
