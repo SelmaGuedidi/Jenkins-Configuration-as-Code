@@ -3,21 +3,25 @@ import com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixPropert
 import hudson.security.Permission
 
 def folder = Jenkins.instance.getItem('folder1')
+def property = folder.getProperties().get(AuthorizationMatrixProperty.class)
 
-def property = new AuthorizationMatrixProperty([
-    // Admin has full permissions
-    Permission.fromId('hudson.model.Item.Read'): ['admin'],
-    Permission.fromId('hudson.model.Item.Configure'): ['admin'],
-    Permission.fromId('hudson.model.Item.Create'): ['admin'],
-    Permission.fromId('hudson.model.Item.Delete'): ['admin'],
+// If property doesn't exist, create a new one
+if (property == null) {
+    property = new AuthorizationMatrixProperty()
+    folder.addProperty(property)
+}
 
-    // User1 has read and build permissions
-    Permission.fromId('hudson.model.Item.Read'): ['user1'],
-    Permission.fromId('hudson.model.Item.Build'): ['user1'],
+// Admin has full permissions
+property.add(Permission.fromId('hudson.model.Item.Read'), 'admin')
+property.add(Permission.fromId('hudson.model.Item.Configure'), 'admin')
+property.add(Permission.fromId('hudson.model.Item.Create'), 'admin')
+property.add(Permission.fromId('hudson.model.Item.Delete'), 'admin')
 
-    // User2 has read permission only
-    Permission.fromId('hudson.model.Item.Read'): ['user2']
-])
+// User1 has read and build permissions
+property.add(Permission.fromId('hudson.model.Item.Read'), 'user1')
+property.add(Permission.fromId('hudson.model.Item.Build'), 'user1')
 
-folder.addProperty(property)
+// User2 has read permission only
+property.add(Permission.fromId('hudson.model.Item.Read'), 'user2')
+
 folder.save()
