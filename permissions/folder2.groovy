@@ -24,7 +24,6 @@ def setPermissions(folderName, permissionsMap) {
 def permissionsFolder2 = [
     'hudson.model.Item.READ': ['user1', 'user2'],
     'hudson.model.Item.BUILD': ['user1'],
-    'hudson.model.Item.CONFIGURE': ['admin'],
     'hudson.model.Item.DELETE': ['admin'],
     'hudson.model.Item.CREATE': ['admin']
 ]
