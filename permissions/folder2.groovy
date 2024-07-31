@@ -1,23 +1,33 @@
-import com.cloudbees.hudson.plugins.folder.properties.*
+folder('folder2') {
+    properties {
+        authorizationMatrix {
+            // Admin has full permissions
+            permission('hudson.model.Item.Read', 'admin')
+            permission('hudson.model.Item.Configure', 'admin')
+            permission('hudson.model.Item.Create', 'admin')
+            permission('hudson.model.Item.Delete', 'admin')
+            permission('hudson.model.Item.Build', 'admin')
+            permission('hudson.model.Item.CANCEL', 'admin')
+            permission('hudson.model.Item.WORKSPACE', 'admin')
+            permission('hudson.model.Item.EXTENDED_READ', 'admin')
+            permission('hudson.model.Run.DELETE', 'admin')
+            permission('hudson.model.Run.UPDATE', 'admin')
+            permission('hudson.model.View.READ', 'admin')
+            permission('hudson.model.View.CREATE', 'admin')
+            permission('hudson.model.View.CONFIGURE', 'admin')
+            permission('hudson.model.View.DELETE', 'admin')
+            permission('com.cloudbees.plugins.credentials.CredentialsProvider.CREATE', 'admin')
+            permission('com.cloudbees.plugins.credentials.CredentialsProvider.DELETE', 'admin')
+            permission('com.cloudbees.plugins.credentials.CredentialsProvider.MANAGE_DOMAINS', 'admin')
+            permission('com.cloudbees.plugins.credentials.CredentialsProvider.UPDATE', 'admin')
+            permission('com.cloudbees.plugins.credentials.CredentialsProvider.VIEW', 'admin')
 
-def folder = Jenkins.instance.getItem('folder2')
+            // User1 has read and build permissions
+            permission('hudson.model.Item.Read', 'user1')
+            permission('hudson.model.Item.Build', 'user1')
 
-def property = folder.getProperties().get(AuthorizationMatrixProperty.class)
-
-// If property doesn't exist, create a new one
-
-
-// Admin has full permissions
-property.add(Permission.fromId('hudson.model.Item.Read'), 'admin')
-property.add(Permission.fromId('hudson.model.Item.Configure'), 'admin')
-property.add(Permission.fromId('hudson.model.Item.Create'), 'admin')
-property.add(Permission.fromId('hudson.model.Item.Delete'), 'admin')
-
-// User1 has read and build permissions
-property.add(Permission.fromId('hudson.model.Item.Read'), 'user1')
-property.add(Permission.fromId('hudson.model.Item.Build'), 'user1')
-
-// User2 has read permission only
-property.add(Permission.fromId('hudson.model.Item.Read'), 'user2')
-
-folder.save()
+            // User2 has read permission only
+            permission('hudson.model.Item.Read', 'user2')
+        }
+    }
+}
