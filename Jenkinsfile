@@ -22,7 +22,7 @@ pipeline {
                 // If a job is deleted from the DSL script it will be deleted from Jenkins
                 removedJobAction: 'DELETE',
                 // Runs the DSL scripts in a sandbox with limited abilities.
-                // If unchecked, and you are not a Jenkins administrator, you will need to wait for an administrator to approve the scripts.
+                
                 sandbox: true
                 
             }
