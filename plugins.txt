@@ -15,3 +15,5 @@ build-discarder:139.v05696a_7fe240
 durable-task:555.v6802fe0f0b_82
 github:1.39.0
 instance-identity:185.v303dc7c645f9
+authorize-project:1.7.2
+groovy:457.v99900cb_85593

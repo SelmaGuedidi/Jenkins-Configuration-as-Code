@@ -1,11 +1,11 @@
 import com.michelin.ci.jenkins.plugins.authmatrix.*
-import com.cloudbees.hudson.plugins.folder.properties.AuthorizationProperty
+import com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixProperty
 def setPermissions(folderName, permissionsMap) {
     def folder = Jenkins.instance.getItemByFullName(folderName)
     if (folder) {
-        def authorizationMatrix = folder.getProperties().find { it instanceof AuthorizationProperty }
+        def authorizationMatrix = folder.getProperties().find { it instanceof AuthorizationMatrixProperty }
         if (!authorizationMatrix) {
-            authorizationMatrix = new AuthorizationProperty()
+            authorizationMatrix = new AuthorizationMatrixProperty()
             folder.addProperty(authorizationMatrix)
         }
         

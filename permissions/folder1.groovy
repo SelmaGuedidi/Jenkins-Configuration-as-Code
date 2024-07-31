@@ -1,5 +1,5 @@
 import com.michelin.ci.jenkins.plugins.authmatrix.*
-import com.cloudbees.hudson.plugins.folder.properties.AuthorizationProperty
+import com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixProperty
 def setPermissions(folderName, permissionsMap) {
     def folder = Jenkins.instance.getItemByFullName(folderName)
     if (folder) {
