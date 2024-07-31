@@ -1,3 +1,5 @@
+import com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixProperty
+
 def folder = Jenkins.instance.getItem('folder2')
 
 def property = folder.getProperties().get(AuthorizationMatrixProperty.class)
