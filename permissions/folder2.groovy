@@ -1,8 +1,5 @@
-import jenkins.model.Jenkins
-import com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixProperty
-import hudson.security.Permission
-
 def folder = Jenkins.instance.getItem('folder2')
+
 def property = folder.getProperties().get(AuthorizationMatrixProperty.class)
 
 // If property doesn't exist, create a new one
