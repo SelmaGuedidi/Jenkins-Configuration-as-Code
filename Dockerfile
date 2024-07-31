@@ -12,7 +12,7 @@ ENV HOME=/home/jenkins
 # Specify cache directory
 ENV CACHE_DIR=/.cache/jenkins-plugin-management-cli
 # Tell the Jenkins Configuration as Code plugin where to find the YAML file
-ENV CASC_JENKINS_CONFIG /opt/bitnami/jenkins/casc_configs/jenkins.yaml
+ENV CASC_JENKINS_CONFIG="/opt/bitnami/jenkins/casc_configs/jenkins.yaml"
 # Disable the setup wizard as we will set up Jenkins as code
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS=true"
 # Install plugins
