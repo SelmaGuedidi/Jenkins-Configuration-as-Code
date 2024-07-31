@@ -3,11 +3,11 @@ folder('folder2') {
         authorization {
             // Admin has full permissions
             permission('hudson.model.Item.Read', 'admin')
-            permission('hudson.model.Item.Configure', 'admin')
-            permission('hudson.model.Item.Create', 'admin')
-            permission('hudson.model.Item.Delete', 'admin')
+            permission('com.cloudbees.plugins.credentials.CredentialsProvider.Update', 'admin')
+            permission('com.cloudbees.plugins.credentials.CredentialsProvider.Create', 'admin')
+            permission('com.cloudbees.plugins.credentials.CredentialsProvider.Delete', 'admin')
             permission('hudson.model.Item.Build', 'admin')
-            permission('hudson.model.Item.CANCEL', 'admin')
+            permission('hudson.model.Item.Cancel', 'admin')
            
 
             // User1 has read and build permissions
