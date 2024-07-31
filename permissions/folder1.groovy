@@ -1,6 +1,6 @@
 folder('folder1') {
     properties {
-        authorizationMatrix {
+        authorization {
             // Admin has full permissions
             permission('hudson.model.Item.Read', 'admin')
             permission('hudson.model.Item.Configure', 'admin')
