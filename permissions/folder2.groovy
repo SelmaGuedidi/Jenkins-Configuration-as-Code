@@ -5,10 +5,7 @@ def folder = Jenkins.instance.getItem('folder2')
 def property = folder.getProperties().get(AuthorizationMatrixProperty.class)
 
 // If property doesn't exist, create a new one
-if (property == null) {
-    property = new AuthorizationMatrixProperty()
-    folder.addProperty(property)
-}
+
 
 // Admin has full permissions
 property.add(Permission.fromId('hudson.model.Item.Read'), 'admin')
