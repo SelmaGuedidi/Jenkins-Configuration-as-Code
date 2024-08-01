@@ -17,7 +17,7 @@ pipelineJob('folder1/front') {
         githubPush()
     }
     properties {
-        authorizationMatrix {
+        authorization {
             permission('hudson.model.Item.Read', 'admin')
             permission('hudson.model.Item.Build', 'admin')
             permission('hudson.model.Item.Configure', 'admin')
