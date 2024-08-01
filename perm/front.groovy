@@ -1,5 +1,9 @@
+import hudson.security.GlobalMatrixAuthorizationStrategy
+import hudson.security.Permission
+import hudson.security.ProjectMatrixAuthorizationStrategy
 import jenkins.model.Jenkins
-import hudson.security.*
+import org.jenkinsci.plugins.matrixauth.PermissionEntry
+import org.jenkinsci.plugins.matrixauth.AuthorizationProperty
 
 def jobName = 'folder1/front'
 
