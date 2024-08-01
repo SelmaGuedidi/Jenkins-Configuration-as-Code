@@ -1,6 +1,6 @@
 import jenkins.model.Jenkins
 import hudson.security.*
-
+import com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixProperty
 def jobName = 'folder1/front'
 
 def jenkinsInstance = Jenkins.getInstance()
