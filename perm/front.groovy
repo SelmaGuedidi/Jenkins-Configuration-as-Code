@@ -7,7 +7,7 @@ def jenkinsInstance = Jenkins.getInstance()
 def job = jenkinsInstance.getItemByFullName(jobName)
 
 if (job) {
-    def strategy = new AuthorizationProperty()
+    def strategy = new AuthorizationMatrixProperty()
     
     // Permissions for admin
     strategy.add(Item.READ, 'admin')
