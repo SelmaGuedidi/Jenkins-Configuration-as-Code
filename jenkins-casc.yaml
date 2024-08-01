@@ -27,7 +27,7 @@ jenkins:
               ttyEnabled: 'false'
               workingDir: /home/jenkins/agent
         
-
+  slaveAgentPort: 50000
   authorizationStrategy:
     folderBased:
       agentRoles:
