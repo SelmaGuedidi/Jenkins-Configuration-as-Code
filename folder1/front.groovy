@@ -16,9 +16,5 @@ pipelineJob('folder1/front') {
     triggers {
         githubPush()
     }
-    properties {
-        pipelineTriggers([
-            githubPush()
-        ])
-    }
+    
 }
