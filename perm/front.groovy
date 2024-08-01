@@ -1,9 +1,5 @@
-import hudson.security.GlobalMatrixAuthorizationStrategy
-import hudson.security.Permission
-import hudson.security.ProjectMatrixAuthorizationStrategy
 import jenkins.model.Jenkins
-import org.jenkinsci.plugins.matrixauth.PermissionEntry
-import org.jenkinsci.plugins.matrixauth.AuthorizationProperty
+import hudson.security.*
 
 def jobName = 'folder1/front'
 
@@ -11,7 +7,7 @@ def jenkinsInstance = Jenkins.getInstance()
 def job = jenkinsInstance.getItemByFullName(jobName)
 
 if (job) {
-    def strategy = new ProjectMatrixAuthorizationStrategy()
+    def strategy = new AuthorizationMatrixProperty()
     
     // Permissions for admin
     strategy.add(Item.READ, 'admin')
