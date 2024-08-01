@@ -7,18 +7,16 @@ def jenkinsInstance = Jenkins.getInstance()
 def job = jenkinsInstance.getItemByFullName(jobName)
 
 if (job) {
-    def strategy = new AuthorizationMatrixProperty()
+    def strategy = new AuthorizationProperty()
     
     // Permissions for admin
     strategy.add(Item.READ, 'admin')
     strategy.add(Item.BUILD, 'admin')
-    strategy.add(Item.CONFIGURE, 'admin')
     strategy.add(Item.DELETE, 'admin')
 
     // Permissions for user1
     strategy.add(Item.READ, 'user1')
     strategy.add(Item.BUILD, 'user1')
-    strategy.add(Item.CONFIGURE, 'user1')
 
     // Permissions for user2
     strategy.add(Item.READ, 'user2')
