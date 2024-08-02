@@ -1,6 +1,6 @@
 import jenkins.model.Jenkins
 import hudson.security.*
-import com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixProperty
+
 def jobName = 'folder1/front'
 
 
@@ -11,17 +11,17 @@ if (job) {
     def strategy = new AuthorizationMatrixProperty()
     
     // Permissions for admin
-    strategy.add(Item.READ, 'admin')
-    strategy.add(Item.BUILD, 'admin')
-    strategy.add(Item.DELETE, 'admin')
+    strategy.add(hudson.model.Item.READ, 'admin')
+    strategy.add(hudson.model.Item.BUILD, 'admin')
+    strategy.add(hudson.model.Item.DELETE, 'admin')
 
     // Permissions for user1
-    strategy.add(Item.READ, 'user1')
-    strategy.add(Item.BUILD, 'user1')
+    strategy.add(hudson.model.Item.READ, 'user1')
+    strategy.add(hudson.model.Item.BUILD, 'user1')
 
     // Permissions for user2
-    strategy.add(Item.READ, 'user2')
-    strategy.add(Item.BUILD, 'user2')
+    strategy.add(hudson.model.Item.READ, 'user2')
+    strategy.add(hudson.model.Item.BUILD, 'user2')
 
     job.addProperty(strategy)
     job.save()
