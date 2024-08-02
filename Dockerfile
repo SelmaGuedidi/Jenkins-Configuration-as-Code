@@ -7,8 +7,6 @@ COPY plugins.txt /opt/bitnami/jenkins/plugins.txt
 COPY jenkins-casc.yaml /opt/bitnami/jenkins/casc_configs/jenkins.yaml
 # Add SSL
 COPY jenkins.jks /bitnami/jenkins/home/jenkins.jks
-# Set the HOME environment variable
-ENV HOME=/home/jenkins
 # Specify cache directory
 ENV CACHE_DIR=/.cache/jenkins-plugin-management-cli
 # Tell the Jenkins Configuration as Code plugin where to find the YAML file
