@@ -1,7 +1,7 @@
 folder('folder1') {
     description('Folder containing the front project')
     properties {
-        authorization {
+        authorizationMatrix {
             permission('hudson.model.Item.Read', 'admin')
             permission('hudson.model.Item.Build', 'admin')
             permission('hudson.model.Item.Configure', 'admin')
@@ -19,7 +19,7 @@ folder('folder1') {
 folder('folder2') {
     description('Folder containing the front project')
     properties {
-        authorization {
+        authorizationMatrix {
             permission('hudson.model.Item.Read', 'admin')
             permission('hudson.model.Item.Build', 'admin')
             permission('hudson.model.Item.Configure', 'admin')
