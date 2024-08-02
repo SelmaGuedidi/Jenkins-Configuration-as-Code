@@ -5,7 +5,7 @@ properties([
 ])
 
 pipeline {
-    
+    agent any
     stages {
         stage('Create job dsl') {
             steps {
