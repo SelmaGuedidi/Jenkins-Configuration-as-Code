@@ -18,11 +18,11 @@ jenkins:
         namespace: "default"
         jenkinsUrl: "http://host.docker.internal:8080"
         templates:
-        - name: "jnlp"
-          label: "mypod"
+        - name: "curl"
+          label: "curl"
           containers:
-            - name: "jnlp"
-              image: jenkins/inbound-agent:latest
+            - name: "curl"
+              image: curlimages/curl:7.70.0
               privileged: 'false'
               ttyEnabled: 'false'
               workingDir: /home/jenkins/agent
