@@ -5,13 +5,7 @@ properties([
 ])
 
 pipeline {
-    agent {
-        kubernetes {
-            cloud "minikube"
-            label "curl"
-            defaultContainer "curl"
-        }
-    }
+    
     stages {
         stage('Create job dsl') {
             steps {
