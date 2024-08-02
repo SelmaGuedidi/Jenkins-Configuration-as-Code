@@ -16,3 +16,13 @@ folder('folder2') {
                 permission('hudson.model.Item.Delete:admin')
             }
 }
+folder('user3-folder') {
+            description('Folder for user1')
+            displayName('User1 Folder')
+            authorization {
+                permission('hudson.model.Item.Read:user1')
+                permission('hudson.model.Item.Build:user1')
+                permission('hudson.model.Item.Create:user1')
+                permission('hudson.model.Item.Delete:admin')
+            }
+        }
