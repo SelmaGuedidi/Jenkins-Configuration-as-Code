@@ -1,36 +1,18 @@
 folder('folder1') {
     description('Folder containing the front project')
-    properties {
-        authorizationMatrix {
-            permission('hudson.model.Item.Read', 'admin')
-            permission('hudson.model.Item.Build', 'admin')
-            permission('hudson.model.Item.Configure', 'admin')
-            permission('hudson.model.Item.Delete', 'admin')
-
-            permission('hudson.model.Item.Read', 'user1')
-            permission('hudson.model.Item.Build', 'user1')
-            permission('hudson.model.Item.Configure', 'user1')
-
-            permission('hudson.model.Item.Read', 'user2')
-            permission('hudson.model.Item.Build', 'user2')
-        }
-    }
+    authorization {
+                permission('hudson.model.Item.Read:user1')
+                permission('hudson.model.Item.Build:user1')
+                permission('hudson.model.Item.Create:user1')
+                permission('hudson.model.Item.Delete:admin')
+            }
 }
 folder('folder2') {
     description('Folder containing the front project')
-    properties {
-        authorizationMatrix {
-            permission('hudson.model.Item.Read', 'admin')
-            permission('hudson.model.Item.Build', 'admin')
-            permission('hudson.model.Item.Configure', 'admin')
-            permission('hudson.model.Item.Delete', 'admin')
-
-            permission('hudson.model.Item.Read', 'user1')
-            permission('hudson.model.Item.Build', 'user1')
-            permission('hudson.model.Item.Configure', 'user1')
-
-            permission('hudson.model.Item.Read', 'user2')
-            permission('hudson.model.Item.Build', 'user2')
-        }
-    }
+    authorization {
+                permission('hudson.model.Item.Read:user1')
+                permission('hudson.model.Item.Build:user1')
+                permission('hudson.model.Item.Create:user1')
+                permission('hudson.model.Item.Delete:admin')
+            }
 }
