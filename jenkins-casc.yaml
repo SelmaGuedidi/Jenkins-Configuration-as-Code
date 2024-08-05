@@ -10,7 +10,14 @@ jenkins:
           password: "password1"
         - id: "user2"
           password: "password2"
-
+  authorizationStrategy:
+    projectMatrix:
+      entries:
+        - user:
+            name: authenticated
+            permissions:
+              - Overall/Read
+        
   clouds:
     - kubernetes:
         name: "minikube"
