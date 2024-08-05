@@ -28,68 +28,7 @@ jenkins:
               workingDir: /home/jenkins/agent
         
   slaveAgentPort: 50000
-  authorizationStrategy:
-    folderBased:
-      agentRoles:
-        - agents:
-            - "agent1"
-          name: "agentRole1"
-          permissions:
-            - id: "Agent/Configure"
-            - id: "Agent/Disconnect"
-          sids:
-            - "user1"
-      folderRoles:
-        - folders:
-            - "user1-folder"
-          name: "user1Role"
-          permissions:
-            - id: "Job/Read"
-            - id: "Job/Build"
-            - id: "Job/Create"
-          sids:
-            - "user1" 
-        - folders:
-            - "user2-folder"
-          name: "user2Role"
-          permissions:
-            - id: "Job/Read"
-            - id: "Job/Build"
-            - id: "Job/Create"
-          sids:
-            - "user2"
-        - folders:
-            - "test-folder"
-          name: "adminRole"
-          permissions:
-            - id: "Job/Read"
-            - id: "Job/Build"
-            - id: "Job/Create"
-            - id: "Job/Delete"
-          sids:
-            - "admin"
-        - folders:
-            - "admin-folder"
-          name: "adminRole"
-          permissions:
-            - id: "Job/Read"
-            - id: "Job/Build"
-            - id: "Job/Create"
-            - id: "Job/Delete"
-          sids:
-            - "admin"
-      globalRoles:
-        - name: "admin"
-          permissions:
-            - id: "Overall/Administer"
-          sids:
-            - "admin"
-        - name: "read"
-          permissions:
-            - id: "Overall/Read"
-          sids:
-            - "user1"
-
+  
 jobs:
   - script: >
         folder('user1-folder') {
@@ -110,6 +49,17 @@ jobs:
                 permission('hudson.model.Item.Read:user2')
                 permission('hudson.model.Item.Build:user2')
                 permission('hudson.model.Item.Create:user2')
+                permission('hudson.model.Item.Delete:admin')
+            }
+        }
+  - script: >
+        folder('user4-folder') {
+            description('Folder for user2')
+            displayName('User2 Folder')
+            authorization {
+                permission('hudson.model.Item.Read:user1')
+                permission('hudson.model.Item.Build:user1')
+                permission('hudson.model.Item.Create:user1')
                 permission('hudson.model.Item.Delete:admin')
             }
         }

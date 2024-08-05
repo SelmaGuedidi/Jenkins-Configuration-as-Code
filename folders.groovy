@@ -1,14 +1,14 @@
 folder('folder1') {
     description('Folder containing the front project')
     authorization {
-         permission('hudson.model.Item.Discover', 'admin')
-                 permission('hudson.model.Item.Discover', 'user1')
+         permission('USER:hudson.model.Item.Discover', 'admin')
+                 permission('USER:hudson.model.Item.Discover', 'user1')
             }
 }
 folder('folder2') {
     description('Folder containing the front project')
     authorization {
-                permission('hudson.model.Item.Discover', 'user1')
+                permission('USER:hudson.model.Item.Discover', 'user1')
             }
 }
 folder('user3-folder') {
@@ -16,14 +16,14 @@ folder('user3-folder') {
             displayName('User1 Folder')
             authorization {
                 permissions('user1', [
-            'hudson.model.Item.Create',
-            'hudson.model.Item.Discover'
+            'USER:hudson.model.Item.Create',
+            'USER:hudson.model.Item.Discover'
         ])
             }
         }
 
 folder('example-3') {
     authorization {
-        permissionAll('user1')
+        permissionAll('USER:user1')
     }
 }
