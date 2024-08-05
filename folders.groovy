@@ -2,13 +2,13 @@ folder('folder1') {
     description('Folder containing the front project')
     authorization {
          permission('hudson.model.Item.Discover', 'USER:admin')
-                 permission('USER:hudson.model.Item.Discover', 'USER:user1')
+                 permission('hudson.model.Item.Discover', 'USER:user1')
             }
 }
 folder('folder2') {
     description('Folder containing the front project')
     authorization {
-                permission('USER:hudson.model.Item.Discover', 'USER:user1')
+                permission('hudson.model.Item.Discover', 'USER:user1')
             }
 }
 folder('user3-folder') {
