@@ -11,7 +11,7 @@ folder('folder2') {
     properties {
     authorizationMatrix {
             entries{
-                permission('hudson.model.Item.Read', 'user1')
+                permission('hudson.model.Item.Read:user1')
                 
             }
             inheritanceStrategy {
