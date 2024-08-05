@@ -10,10 +10,10 @@ folder('folder2') {
     description('Folder containing the front project')
     properties {
     authorizationMatrix {
-            entries(
+            entries{
                 "USER:Job/Read:user1"
                 
-            )
+            }
             inheritanceStrategy {
                 nonInheriting()
             }
