@@ -10,7 +10,7 @@ folder('folder2') {
     description('Folder containing the front project')
     properties {
     authorizationMatrix {
-            permissions([
+            entries([
                 "USER:Job/Read:user1",
                 
             ])
