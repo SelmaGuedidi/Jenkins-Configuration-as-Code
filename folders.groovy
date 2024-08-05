@@ -16,6 +16,7 @@ folder('folder2') {
                 nonInheriting()
             }
 }
+}
 folder('user3-folder') {
             description('Folder for user1')
             displayName('User1 Folder')
