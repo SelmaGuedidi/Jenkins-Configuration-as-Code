@@ -10,13 +10,19 @@ folder('folder2') {
     description('Folder containing the front project')
     properties {
     authorizationMatrix {
-            permissions([
-        'hudson.model.Item.Build:user1',
-        'hudson.model.Item.Cancel:Build:user1',
-        'hudson.model.Item.Discover:Build:user1',
-        'hudson.model.Item.Read:Build:user1',
-        'hudson.model.Item.Workspace:Build:user1'
-      ])
+           permissions {
+                permission {
+                    permission('hudson.model.Item.Build') // Example permission
+                    user('user1')
+                    allowed(true)
+                }
+                permission {
+                    permission('hudson.model.Item.Cancel:Build') // Example permission
+                    user('user1')
+                    allowed(true)
+                }
+                // Add more permissions as needed
+            }
             inheritanceStrategy {
                 nonInheriting()
             }
