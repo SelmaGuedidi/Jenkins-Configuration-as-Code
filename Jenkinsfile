@@ -8,8 +8,8 @@ pipeline {
     agent {
         kubernetes {
             cloud "minikube"
-            label "curl"
-            defaultContainer "curl"
+            label "shell"
+            defaultContainer "shell"
         }
     }
     stages {
