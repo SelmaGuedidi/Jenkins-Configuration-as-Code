@@ -7,8 +7,13 @@ folder('folder1') {
 }
 folder('folder2') {
     description('Folder containing the front project')
-    authorization {
-                permission('hudson.model.Item.Discover', 'USER:user1')
+    authorizationMatrix {
+            permissions([
+                "USER:Job/Read:user1",
+                
+            ])
+            inheritanceStrategy {
+                nonInheriting()
             }
 }
 folder('user3-folder') {
