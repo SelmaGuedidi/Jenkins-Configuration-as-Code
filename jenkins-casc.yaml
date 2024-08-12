@@ -1,5 +1,6 @@
 jenkins:
   systemMessage: "Welcome to Jenkins"
+  numExecutors: 0
   securityRealm:
     local:
       allowsSignup: false
@@ -10,14 +11,18 @@ jenkins:
           password: "password1"
         - id: "user2"
           password: "password2"
+  
   authorizationStrategy:
     projectMatrix:
       entries:
         - user:
-            name: authenticated
+            name: user1
             permissions:
               - Overall/Read
-        
+        - user:
+            name: admin
+            permissions:
+              - Overall/Administer
   clouds:
     - kubernetes:
         name: "minikube"
@@ -86,3 +91,24 @@ appearance:
   locale:
     systemLocale: en
     ignoreAcceptLanguage: true
+unclassified:
+  thinBackup:
+    backupAdditionalFiles: false
+    backupAdditionalFilesRegex: "^.*\\.(txt)$"
+    backupBuildArchive: false
+    backupBuildResults: true
+    backupBuildsToKeepOnly: false
+    backupConfigHistory: false
+    backupNextBuildNumber: false
+    backupPath: "/Users/selma/thin-backup"
+    backupPluginArchives: false
+    backupUserContents: false
+    cleanupDiff: false
+    diffBackupSchedule: "0 12 * * 1-5"
+    excludedFilesRegex: "^.*\\.(log)$"
+    failFast: true
+    forceQuietModeTimeout: 120
+    fullBackupSchedule: "0 12 * * 1"
+    moveOldBackupsToZipFile: false
+    nrMaxStoredFull: -1
+    waitForIdle: true

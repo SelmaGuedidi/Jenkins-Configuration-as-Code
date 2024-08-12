@@ -1,4 +1,4 @@
-pipelineJob('folder1/front') {
+pipelineJob('folder2/front') {
     description('Builds the front project from GitHub')
     definition {
         cpsScm {

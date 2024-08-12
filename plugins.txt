@@ -17,3 +17,5 @@ github:1.39.0
 instance-identity:185.v303dc7c645f9
 groovy:457.v99900cb_85593
 role-strategy:727.vd344b_eec783d
+thinBackup:2.1.1
+prometheus:780.v7c50a_d288424
