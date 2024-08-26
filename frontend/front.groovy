@@ -1,13 +1,13 @@
-pipelineJob('folder2/front') {
+pipelineJob('frontend/front') {
     description('Builds the front project from GitHub')
     definition {
         cpsScm {
             scm {
                 git {
                     remote {
-                        url('https://github.com/nicktodd/basicreact')
+                        url('https://github.com/selmaguedidi/react-app')
                     }
-                    branches('*/master')
+                    branches('*/main')
                     scriptPath('Jenkinsfile')
                 }
             }
